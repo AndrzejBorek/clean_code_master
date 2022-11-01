@@ -1,6 +1,7 @@
 package com.b.simple.design.model.customer;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,14 +22,12 @@ public enum CustomerType {
 	/**
 	 * List of natural person types.
 	 */
-	public static final List<String> NATURAL_PERSON_TYPES = Arrays
-			.asList(CustomerType.PRIVATE.toString());
+	public static final List<String> NATURAL_PERSON_TYPES = Collections.singletonList(CustomerType.PRIVATE.toString());
 
 	/**
 	 * List of corporate types.
 	 */
-	public static final List<String> CORPORATE_TYPES = Arrays
-			.asList(CustomerType.BUSINESS.toString());
+	public static final List<String> CORPORATE_TYPES = Collections.singletonList(CustomerType.BUSINESS.toString());
 
 	CustomerType(final String textValue) {
 		this.textValue = textValue;

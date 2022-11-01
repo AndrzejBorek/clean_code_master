@@ -1,8 +1,10 @@
 package com.c.refactoring.menuexamples;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -20,7 +22,7 @@ public class MenuAccessTestRefactored {
 
 		Role[] userRoles = { MENU_A_READ_ROLE, MENU_A_WRITE_ROLE };
 
-		List<MenuItem> menuItems = Arrays.asList(MENU_A);
+		List<MenuItem> menuItems = Collections.singletonList(MENU_A);
 
 		menuAccess.setAuthorizationsInEachMenus(menuItems, userRoles);
 
@@ -32,7 +34,7 @@ public class MenuAccessTestRefactored {
 
 		Role[] userRoles = { MENU_A_READ_ROLE };
 
-		List<MenuItem> menuItems = Arrays.asList(MENU_A);
+		List<MenuItem> menuItems = Collections.singletonList(MENU_A);
 
 		menuAccess.setAuthorizationsInEachMenus(menuItems, userRoles);
 
@@ -44,7 +46,7 @@ public class MenuAccessTestRefactored {
 
 		Role[] userRoles = { MENU_A_WRITE_ROLE };
 
-		List<MenuItem> menuItems = Arrays.asList(MENU_A);
+		List<MenuItem> menuItems = Collections.singletonList(MENU_A);
 
 		menuAccess.setAuthorizationsInEachMenus(menuItems, userRoles);
 
@@ -54,12 +56,12 @@ public class MenuAccessTestRefactored {
 
 	private void assertMenuItemIsWritable(MenuItem actual) {
 		assertEquals(Constants.WRITE, actual.getAccess());
-		assertEquals(true, actual.isVisible());
+		assertTrue(actual.isVisible());
 	}
 
 	private void assertMenuItemIsReadable(MenuItem actual) {
 		assertEquals(Constants.READ, actual.getAccess());
-		assertEquals(true, actual.isVisible());
+		assertTrue(actual.isVisible());
 	}
 
 }

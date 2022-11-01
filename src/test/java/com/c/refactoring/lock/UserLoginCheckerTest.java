@@ -11,7 +11,6 @@ public class UserLoginCheckerTest {
     UserLoginChecker userLoginChecker = new UserLoginChecker();
     private final String TEST_USER_ID_1 = "TEST_USER_ID_1";
     private final String TEST_USER_ID_2 = "TEST_USER_ID_2";
-    private final String STATUS_NOT_USED = "NOT_USED";
     private static final boolean IS_FIRST_SCREEN_TRUE = true;
     private static final boolean IS_FIRST_SCREEN_FALSE = false;
 
@@ -22,7 +21,7 @@ public class UserLoginCheckerTest {
         //given
         Object[] access = new Object[]{TEST_USER_ID_1, new Date()};
         //when
-        Lock lock = userLoginChecker.isUserAllowedToLogin(ID, STATUS_NOT_USED, IS_FIRST_SCREEN_TRUE, new User(
+        Lock lock = userLoginChecker.isUserAllowedToLogin( IS_FIRST_SCREEN_TRUE, new User(
                 TEST_USER_ID_2), Arrays.asList(new Object[][]{access}));
         //then
         assertAll(
@@ -36,7 +35,7 @@ public class UserLoginCheckerTest {
         //given
         Object[] access = new Object[]{TEST_USER_ID_1, new Date()};
         //when
-        Lock lock = userLoginChecker.isUserAllowedToLogin(ID, STATUS_NOT_USED, IS_FIRST_SCREEN_TRUE, new User(
+        Lock lock = userLoginChecker.isUserAllowedToLogin( IS_FIRST_SCREEN_TRUE, new User(
                 TEST_USER_ID_1), Arrays.asList(new Object[][]{access}));
         //then
         assertAll(
@@ -50,7 +49,7 @@ public class UserLoginCheckerTest {
         //given
         Object[] access = new Object[]{TEST_USER_ID_1, new Date()};
         //when
-        Lock lock = userLoginChecker.isUserAllowedToLogin(ID, STATUS_NOT_USED, IS_FIRST_SCREEN_FALSE, new User(
+        Lock lock = userLoginChecker.isUserAllowedToLogin( IS_FIRST_SCREEN_FALSE, new User(
                 TEST_USER_ID_1), Arrays.asList(new Object[][]{access}));
         //then
         assertAll(
@@ -64,7 +63,7 @@ public class UserLoginCheckerTest {
         //given
         Object[] access = new Object[]{TEST_USER_ID_1, threeHoursBefore()};
         //when
-        Lock lock = userLoginChecker.isUserAllowedToLogin(ID, STATUS_NOT_USED, IS_FIRST_SCREEN_TRUE, new User(
+        Lock lock = userLoginChecker.isUserAllowedToLogin( IS_FIRST_SCREEN_TRUE, new User(
                 TEST_USER_ID_2), Arrays.asList(new Object[][]{access}));
         //then
         assertAll(
@@ -77,7 +76,7 @@ public class UserLoginCheckerTest {
         //given
         Object[] access = new Object[]{TEST_USER_ID_1, threeHoursBefore()};
         //when
-        Lock lock = userLoginChecker.isUserAllowedToLogin(ID, STATUS_NOT_USED, IS_FIRST_SCREEN_FALSE, new User(
+        Lock lock = userLoginChecker.isUserAllowedToLogin(IS_FIRST_SCREEN_FALSE, new User(
                 TEST_USER_ID_2), Arrays.asList(new Object[][]{access}));
         //then
         assertAll(

@@ -31,8 +31,7 @@ public class LevelDecider {
                     Constants.CONFIGURATION_ALLOWANCE_LIMIT);
             // calculate Allowance Diff Percentage
             if (allowancePrevVal != null && allowancePrevVal.doubleValue() != 0) {
-                allowanceDiffPerc = allowanceDiff.abs()
-                        .divide(allowancePrevVal, 2, BigDecimal.ROUND_HALF_UP)
+                allowanceDiffPerc = allowanceDiff.abs().divide(allowancePrevVal, 2, BigDecimal.ROUND_HALF_UP)
                         .multiply(Constants.BIG_DECIMAL_HUNDRED);
                 isAllowanceDiffPercLessConfig = allowanceDiffPerc
                         .compareTo(configuredDiffPerc) < 1;

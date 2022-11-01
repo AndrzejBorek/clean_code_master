@@ -4,9 +4,6 @@ import com.c.refactoring.StringUtils;
 
 public class Movie {
 
-    private final int VALID_LENGTH_OF_B_RATING = 2;
-
-    private final int VALID_LENGTH_OF_A_RATING = 3;
     String rating;
 
     public Movie(String rating) {
@@ -25,31 +22,36 @@ public class Movie {
 
     public boolean isValidRating() {
 
-        if (this.getRating() != null) {
-            if (isBRating(this.getRating())) {
-                return isValidBRating(this.getRating());
-            } else return isValidARating(this.getRating());
+        if (this.getRating() == null)
+            return false;
+        if (isValidARating(this.getRating()))
+            return true;
+        return isValidBRating(this.getRating());
+    }
 
-        }
-        return false;
+    public boolean isBRating(String str) {
+        int validLengthOfBRating = 2;
+        return str.substring(0, 1).equalsIgnoreCase("B")
+                && str.length() == validLengthOfBRating;
     }
 
     public boolean isValidBRating(String str) {
         String toCheck = str.substring(1, 2);
-        return StringUtils.isNumeric(toCheck)
+        return this.isBRating(str) && StringUtils.isNumeric(toCheck)
                 && Integer.parseInt(toCheck) > 0
                 && Integer.parseInt(toCheck) < 5;
     }
 
-    public boolean isBRating(String str) {
-        return str.substring(0, 1).equalsIgnoreCase("B")
-                && str.length() == VALID_LENGTH_OF_B_RATING;
+
+    public boolean isARating(String str) {
+        int validLengthOfARating = 3;
+        return str.substring(0, 1).equalsIgnoreCase("A")
+                && str.length() == validLengthOfARating;
     }
 
     public boolean isValidARating(String str) {
-        return str.substring(0, 1).equalsIgnoreCase("A")
-                && str.length() == VALID_LENGTH_OF_A_RATING
-                && StringUtils.isNumeric(str.substring(1, 3));
+        return this.isARating(str)
+                && StringUtils.isNumeric(rating.substring(1, 3));
     }
 
     public void setRating(String rating) {

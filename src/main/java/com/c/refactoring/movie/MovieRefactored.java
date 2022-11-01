@@ -33,10 +33,7 @@ public class MovieRefactored {
         if (isValidARating())
             return true;
 
-        if (isValidBRating())
-        	return true;
-
-        return false;
+        return isValidBRating();
     }
 
 	private boolean isValidARating() {
