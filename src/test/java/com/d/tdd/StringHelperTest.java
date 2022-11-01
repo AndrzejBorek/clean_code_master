@@ -37,7 +37,8 @@ class StringHelperTest {
 		assertFalse(helper.areFirstTwoAndLastTwoCharsTheSame("ABC"));
 		assertTrue(helper.areFirstTwoAndLastTwoCharsTheSame("AAA"));
 		assertTrue(helper.areFirstTwoAndLastTwoCharsTheSame("ABCAB"));
-		assertFalse(helper.areFirstTwoAndLastTwoCharsTheSame("ABCDEBA"));	
+		assertFalse(helper.areFirstTwoAndLastTwoCharsTheSame("ABCDEBA"));
+		assertTrue(helper.areFirstTwoAndLastTwoCharsTheSame("  ABCAB  "));
 	}
 
 }
